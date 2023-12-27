@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form"
 import Modal from "./Modal";
 import { AuthContext } from "../contexts/AuthProvider";
-
+import Swal from 'sweetalert2'
 const Signup = () => {
     const {
         register,
@@ -25,7 +25,14 @@ const Signup = () => {
         createUser(email, password).then((result) => {
           // Signed up 
           const user = result.user;
-          alert("Account creation successfully done!")
+          // alert("Account creation successfully done!")
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Account creation successfully done!",
+            showConfirmButton: false,
+            timer: 1500
+          });
           document.getElementById("my_modal_5").close()
           navigate(from, {replace: true})
           // ...
